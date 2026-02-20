@@ -10669,7 +10669,7 @@ input:focus::placeholder, textarea:focus::placeholder {
 }
 
 .ns-newsletter-inner {
-  padding: 75px 60px 45px;
+  padding: 75px 50px 45px;
   background: var(--clr-common-black);
   border-radius: 10px;
   position: relative;
@@ -10803,7 +10803,7 @@ input:focus::placeholder, textarea:focus::placeholder {
 }
 
 .ns-newsletter-area-2 .ns-newsletter-wrap {
-  margin-bottom: -115px;
+  margin-bottom: -80px;
   z-index: 9;
 }
 .ns-newsletter-area-2 .ns-newsletter-inner {

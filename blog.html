@@ -42,6 +42,7 @@
         <link rel="stylesheet" href="css/swipper.css">
         <link rel="stylesheet" href="css/blog-main.css">
         <link rel="stylesheet" href="css/style.css"/>
+        <link rel="stylesheet" href="css/chat-IA.css"/>
 
         <!-- Icon Font Stylesheet -->
         
@@ -103,11 +104,19 @@
                 <img class="breadcrumb-bg" src="img/monitoramentoCover.jpg" alt="Breadcrumb Background">
                 <div class="container">
                     <div class="row">
-                    <div class="col-12">
-                        <div class="ns-breadcrumb-wrap text-center">
-                        <h2 class="ns-breadcrumb-title">Notícias e Atualizações</h2>
+                        <div class="chat-header">
+                            <span class="display-5 mb-5">Olá! Sou sua assistente de IA</span>
+                        </div>                        
+                        <div class="display-5 mb-5">
+                            <div class="ns-breadcrumb-wrap text-center">
+                                <div class="chat-container chat-radius">                            
+                                    <div class="chat-input chat-radius">
+                                        <input type="text" class="chat-radius" id="userInput" placeholder="Como posso ajudar?...">
+                                        <button onclick="sendMessage()">Enviar</button>
+                                    </div>
+                                </div>                     
+                            </div>
                         </div>
-                    </div>
                     </div>
                 </div>
             </section>
@@ -119,26 +128,23 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="ns-section mb-50 text-center">
-                                <span class="ns-section-subtitle">Blog Principal</span>
-                                <h2 class="ns-section-title mb-0">Nosso Blog de Notícias</h2>
+                                <span class="subtitle">Blog Principal</span>
+                                <h2 class="display-5 mb-5">Nosso Blog de Notícias</h2>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row">                        
                         <div class="col-xl-4 col-lg-6 col-md-6">
                             <div class="ns-blog-item mb-30">
                                 <div class="ns-blog-img w_img">
-                                    <a href="blog-details.html"><img src="img/thumb/seguranca-invista-redimensionado.jpeg" alt="Not Found"></a>
-                                    <span class="ns-blog-tag">Business</span>
+                                    <a href="blog-details.html"><img src="img/thumb/thumb-1.png" alt="Not Found"></a>
                                     <span class="ns-blog-img-shape-1"></span>
                                     <span class="ns-blog-img-shape-2"></span>
                                 </div>
                                 <div class="ns-blog-content">
-                                    <div class="ns-blog-content-meta"><span class="ns-blog-admin">By: <a href="#">Admin</a></span><span class="ns-blog-date">January 6, 2022</span></div>
-                                    <h3 class="ns-blog-content-title"><a href="blog-details.html">We are best blog running
-                                        solution company</a></h3>
-                                    <p>World’s best organizations, for 19+
-                                        years and runninh...</p>
+                                    <div class="ns-blog-content-meta"><span class="ns-blog-admin">Por: <a href="#">Admin</a></span><span class="ns-blog-date">Janeiro 6, 2026</span></div>
+                                    <h3 class="ns-blog-content-title"><a href="blog-details.html">Sua casa não é BBB, mas pode ser muito bem protegida</a></h3>
+                                    <p>Sua casa não precisa estar em evidência para estar segura. Com um projeto profissional...</p>
                                     <a href="blog-details.html" class="ns-blog-btn">Ler Mais<i class="icofont-plus"></i></a>
                                     <span class="ns-blog-shape-1"></span>
                                     <span class="ns-blog-shape-2"></span>
@@ -148,17 +154,14 @@
                         <div class="col-xl-4 col-lg-6 col-md-6">
                             <div class="ns-blog-item mb-30">
                                 <div class="ns-blog-img w_img">
-                                    <a href="blog-details.html"><img src="img/thumb/seguranca-invista-redimensionado.jpeg" alt="Not Found"></a>
-                                    <span class="ns-blog-tag">Business</span>
+                                    <a href="blog-details.html"><img src="img/thumb/thumb-2.png" alt="Not Found"></a>
                                     <span class="ns-blog-img-shape-1"></span>
                                     <span class="ns-blog-img-shape-2"></span>
                                 </div>
                                 <div class="ns-blog-content">
-                                    <div class="ns-blog-content-meta"><span class="ns-blog-admin">By: <a href="#">Admin</a></span><span class="ns-blog-date">January 6, 2022</span></div>
-                                    <h3 class="ns-blog-content-title"><a href="blog-details.html">We are best blog running
-                                        solution company</a></h3>
-                                    <p>World’s best organizations, for 19+
-                                        years and runninh...</p>
+                                    <div class="ns-blog-content-meta"><span class="ns-blog-admin">Por: <a href="#">Admin</a></span><span class="ns-blog-date">Janeiro 6, 2026</span></div>
+                                    <h3 class="ns-blog-content-title"><a href="blog-details.html">Hora de levar  segurança profissional parra sua casa</a></h3>
+                                    <p>Sua casa não precisa depender de improviso na segurança. Com um projeto profissional...</p>
                                     <a href="blog-details.html" class="ns-blog-btn">Ler Mais<i class="icofont-plus"></i></a>
                                     <span class="ns-blog-shape-1"></span>
                                     <span class="ns-blog-shape-2"></span>
@@ -168,77 +171,14 @@
                         <div class="col-xl-4 col-lg-6 col-md-6">
                             <div class="ns-blog-item mb-30">
                                 <div class="ns-blog-img w_img">
-                                    <a href="blog-details.html"><img src="img/thumb/seguranca-invista-redimensionado.jpeg" alt="Not Found"></a>
-                                    <span class="ns-blog-tag">Business</span>
+                                    <a href="blog-details.html"><img src="img/thumb/thumb-3.png" alt="Not Found"></a>
                                     <span class="ns-blog-img-shape-1"></span>
                                     <span class="ns-blog-img-shape-2"></span>
                                 </div>
                                 <div class="ns-blog-content">
-                                    <div class="ns-blog-content-meta"><span class="ns-blog-admin">By: <a href="#">Admin</a></span><span class="ns-blog-date">January 6, 2022</span></div>
-                                    <h3 class="ns-blog-content-title"><a href="blog-details.html">We are best blog running
-                                        solution company</a></h3>
-                                    <p>World’s best organizations, for 19+
-                                        years and runninh...</p>
-                                    <a href="blog-details.html" class="ns-blog-btn">Ler Mais<i class="icofont-plus"></i></a>
-                                    <span class="ns-blog-shape-1"></span>
-                                    <span class="ns-blog-shape-2"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-6 col-md-6">
-                            <div class="ns-blog-item mb-30">
-                                <div class="ns-blog-img w_img">
-                                    <a href="blog-details.html"><img src="img/thumb/seguranca-invista-redimensionado.jpeg" alt="Not Found"></a>
-                                    <span class="ns-blog-tag">Business</span>
-                                    <span class="ns-blog-img-shape-1"></span>
-                                    <span class="ns-blog-img-shape-2"></span>
-                                </div>
-                                <div class="ns-blog-content">
-                                    <div class="ns-blog-content-meta"><span class="ns-blog-admin">By: <a href="#">Admin</a></span><span class="ns-blog-date">January 6, 2022</span></div>
-                                    <h3 class="ns-blog-content-title"><a href="blog-details.html">We are best blog running
-                                        solution company</a></h3>
-                                    <p>World’s best organizations, for 19+
-                                        years and runninh...</p>
-                                    <a href="blog-details.html" class="ns-blog-btn">Ler Mais<i class="icofont-plus"></i></a>
-                                    <span class="ns-blog-shape-1"></span>
-                                    <span class="ns-blog-shape-2"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-6 col-md-6">
-                            <div class="ns-blog-item mb-30">
-                                <div class="ns-blog-img w_img">
-                                    <a href="blog-details.html"><img src="img/thumb/seguranca-invista-redimensionado.jpeg" alt="Not Found"></a>
-                                    <span class="ns-blog-tag">Business</span>
-                                    <span class="ns-blog-img-shape-1"></span>
-                                    <span class="ns-blog-img-shape-2"></span>
-                                </div>
-                                <div class="ns-blog-content">
-                                    <div class="ns-blog-content-meta"><span class="ns-blog-admin">By: <a href="#">Admin</a></span><span class="ns-blog-date">January 6, 2022</span></div>
-                                    <h3 class="ns-blog-content-title"><a href="blog-details.html">We are best blog running
-                                        solution company</a></h3>
-                                    <p>World’s best organizations, for 19+
-                                        years and runninh...</p>
-                                    <a href="blog-details.html" class="ns-blog-btn">Ler Mais<i class="icofont-plus"></i></a>
-                                    <span class="ns-blog-shape-1"></span>
-                                    <span class="ns-blog-shape-2"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-6 col-md-6">
-                            <div class="ns-blog-item mb-30">
-                                <div class="ns-blog-img w_img">
-                                    <a href="blog-details.html"><img src="img/thumb/seguranca-invista-redimensionado.jpeg" alt="Not Found"></a>
-                                    <span class="ns-blog-tag">Business</span>
-                                    <span class="ns-blog-img-shape-1"></span>
-                                    <span class="ns-blog-img-shape-2"></span>
-                                </div>
-                                <div class="ns-blog-content">
-                                    <div class="ns-blog-content-meta"><span class="ns-blog-admin">By: <a href="#">Admin</a></span><span class="ns-blog-date">January 6, 2022</span></div>
-                                    <h3 class="ns-blog-content-title"><a href="blog-details.html">We are best blog running
-                                        solution company</a></h3>
-                                    <p>World’s best organizations, for 19+
-                                        years and runninh...</p>
+                                    <div class="ns-blog-content-meta"><span class="ns-blog-admin">Por: <a href="#">Admin</a></span><span class="ns-blog-date">Janeiro 6, 2026</span></div>
+                                    <h3 class="ns-blog-content-title"><a href="blog-details.html">O que "Tremembé" revela sobre segurança real</a></h3>
+                                    <p>A série Tremembé chamou atenção por muita coisa, mas um ponto é muito real fora da tela...</p>
                                     <a href="blog-details.html" class="ns-blog-btn">Ler Mais<i class="icofont-plus"></i></a>
                                     <span class="ns-blog-shape-1"></span>
                                     <span class="ns-blog-shape-2"></span>

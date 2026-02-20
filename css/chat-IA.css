@@ -1,0 +1,140 @@
+:root {
+    --secondary: #9B9B9B;
+    --light: #F5F5F5;
+    --dark: #161616;
+    --red: #C63645;
+}
+
+.chat-container {
+    max-width: 100%;
+    background: var(--light);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chat-container-articles {
+    width: 1170px;
+    margin: auto;
+    padding: 20px;
+}
+
+.chat-container-articles {
+    margin: auto;
+    padding: 20px;
+}
+
+/* Telas muito grandes (1600px – 1799px) */
+@media (min-width: 1600px) and (max-width: 1799px) {
+    .chat-container-articles {
+        width: 1170px;
+    }
+}
+
+/* Telas grandes (1400px – 1599px) */
+@media (min-width: 1400px) and (max-width: 1599px) {
+    .chat-container-articles {
+        width: 1300px;
+    }
+}
+
+/* Telas médias grandes (1200px – 1399px) */
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .chat-container-articles {
+        width: 1100px;
+    }
+}
+
+/* Telas médias (992px – 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .chat-container-articles {
+        width: 900px;
+    }
+}
+
+/* Tablets (768px – 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .chat-container-articles {
+        width: 100%;
+        padding: 15px;
+    }
+}
+
+/* Smartphones (até 767px) */
+@media (max-width: 767px) {
+    .chat-container-articles {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+    }
+    .chat-container {
+        width: 100%;
+        border-radius: 0;
+        font-size: 14px;
+    }
+}
+
+.chat-header {
+    color: var(--light);
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.chat-header-articles {
+    color: var(--dark);
+    padding: 12px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.chat-input {
+    display: flex;
+    border-top: 1px solid var(--light);
+    border: var(--secondary) 2px solid;
+}
+
+.chat-radius {
+    border-radius: 40px;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+.chat-input button {
+    background: var(--red);
+    color: var(--light);
+    border: none;
+    padding: 0 16px;
+    cursor: pointer;
+    font-size: 14px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+}
+
+.chat-input button:hover {
+    background: var(--red);
+}
+
+.message {
+    margin-bottom: 10px;
+}
+
+.message.user {
+    text-align: right;
+    color: var(--dark);
+}
+
+.message.ai {
+    text-align: left;
+    color: var(--secondary);
+}
