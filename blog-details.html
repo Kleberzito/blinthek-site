@@ -107,7 +107,8 @@
                                 <div class="ns-blog-details-client-review">
                                     <h5 class="ns-client-review-title">Clients Reviews:</h5>
                                     <blockquote class="ns-blog-detials-quote">
-                                        <p>Com a Blinthek, finalmente sinto que minha casa está protegida sem perder a privacidade. O sistema é discreto e eficiente...</p>
+                                        <p>As câmeras de segurança são instrumentos fundamentais de prevenção, pois além de inibir a ação criminosa, permitem 
+                                            identificar e registrar ocorrências, trazendo transparência e evidências concretas.</p>
                                         <div class="ns-quote-admin">
                                             <h5>Mariana S.</h5>
                                             <span>Founder</span>
@@ -187,30 +188,14 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Sessão de Chat com IA -->
+                    <div id="chat"></div>               
+                    <!-- Sessão de Chat com IA end -->
+
                 </div>
             </section>
-            <!-- blog details area end -->
-
-            <!-- Sessão de Chat com IA -->
-            <section id="chat-ia">            
-                <div class="row">
-                    <div class="chat-header">
-                        <span class="chat-header-articles ">Olá! Sou sua assistente de IA</span>
-                    </div>                        
-                    <div class="col-12 chat-container-articles">
-                        <div class="ns-breadcrumb-wrap text-center">
-                            <div class="chat-container chat-radius">                            
-                                <div class="chat-input chat-radius">
-                                    <input type="text" class="chat-radius" id="userInput" placeholder="Como posso ajudar?...">
-                                    <button onclick="sendMessage()">Enviar</button>
-                                </div>
-                            </div>                     
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- Sessão de Chat com IA end -->
-
+            <!-- blog details area end --> 
 
             <!-- newsletter area start -->
             <div class="ns-newsletter-area ns-newsletter-area-2 pt-100">
@@ -225,14 +210,14 @@
                                 <div class="col-xl-6 col-lg-6">
                                     <div class="ns-newsletter-content mb-30">
                                         <h3 class="ns-newsletter-title">
-                                            Assine nossa Newsletter e conecte-se aos nossos serviços na sua região
+                                            Fale conosco pelo WhatsApp e tenha atendimento imediato sobre nossos serviços na sua região!
                                         </h3>
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6">
                                     <div class="ns-newsletter-input mb-30">
                                         <input type="email" placeholder="Seu WhatsApp">
-                                        <button class="ns-newsletter-btn" type="submit">Increva-se</button>
+                                        <button class="ns-newsletter-btn" type="submit">Enviar</button>
                                     </div>
                                 </div>
                             </div>
@@ -247,8 +232,15 @@
         <div id="footer"></div>
         <!-- footer area end -->
 
-		<!-- JS here -->
-        <script src="js/navbar.js"></script>
-        <script src="js/footer.js"></script>
+		<!-- WebLLM como módulo (deve vir antes de qualquer script que dependa dele) -->
+        <script type="module">
+        import * as webllm from "https://esm.run/@mlc-ai/web-llm";
+        window.webllm = webllm;
+        console.log("WebLLM carregado globalmente");
+        </script>
+
+        <!-- Scripts locais -->
+        <script src="js/import-page.js"></script>
+        <script src="js/chat-IA.js"></script>  
     </body>
 </html>

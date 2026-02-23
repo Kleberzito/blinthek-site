@@ -100,25 +100,8 @@
 
         <main>
             <!-- breadcrumb area start -->
-            <section class="breadcrumb-height ns-breadcrumb-area">
-                <img class="breadcrumb-bg" src="img/monitoramentoCover.jpg" alt="Breadcrumb Background">
-                <div class="container">
-                    <div class="row">
-                        <div class="chat-header">
-                            <span class="display-5 mb-5">Olá! Sou sua assistente de IA</span>
-                        </div>                        
-                        <div class="display-5 mb-5">
-                            <div class="ns-breadcrumb-wrap text-center">
-                                <div class="chat-container chat-radius">                            
-                                    <div class="chat-input chat-radius">
-                                        <input type="text" class="chat-radius" id="userInput" placeholder="Como posso ajudar?...">
-                                        <button onclick="sendMessage()">Enviar</button>
-                                    </div>
-                                </div>                     
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <section class="breadcrumb-height ns-breadcrumb-area chat-color">
+                <div id="chat"></div>
             </section>
             <!-- breadcrumb area end -->
 
@@ -223,12 +206,17 @@
     
         <!-- footer area start -->
         <div id="footer"></div>
-        <!-- footer area end -->
-
-		<!-- JS here -->
+        <!-- footer area end -->		
         
-        <script src="js/navbar.js"></script>
-        <script src="js/footer.js"></script>
+        <!-- WebLLM como módulo (deve vir antes de qualquer script que dependa dele) -->
+        <script type="module">
+        import * as webllm from "https://esm.run/@mlc-ai/web-llm";
+        window.webllm = webllm;
+        console.log("WebLLM carregado globalmente");
+        </script>
 
+        <!-- Scripts locais -->
+        <script src="js/import-page.js"></script>
+        <script src="js/chat-IA.js"></script>    
     </body>
 </html>
