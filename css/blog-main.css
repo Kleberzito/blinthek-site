@@ -12033,6 +12033,10 @@ input:focus::placeholder, textarea:focus::placeholder {
   display: inline-block;
 }
 
+.title-style{
+  text-transform: uppercase;
+}
+
 .ns-breadcrumb-shape-1 {
   position: absolute;
   left: 0;

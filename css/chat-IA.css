@@ -9,9 +9,9 @@
 .chat-area {
     display: flex;
     flex-direction: column;
+    font-family: "Roboto", sans-serif;
     align-items: center;
-    font-family: "Inter", sans-serif;    
-    max-height: 200px;
+    max-height: 220px;
     padding-bottom: 20px;
     overflow: hidden;
     transition: max-height 0.5s ease, opacity 0.3s ease;
@@ -71,12 +71,30 @@
 }
 
 .chat-messages::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
+.typing-indicator {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.2; }
+    50% { opacity: 1; }
+    100% { opacity: 0.2; }
+}
 
 .message.ai {
-    align-self: flex-start; 
+    align-self: flex-start;
+    display: flex; 
+}
+
+.message.ai img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: var(--dark);
+    margin-right: 5px;
 }
 
 .message.user {
@@ -119,9 +137,10 @@
     color: var(--dark);
     font-size: 30px;
     border: none;
-    padding: 0 0.8rem;
     cursor: pointer;
     border-radius: 50%;
+    width: 50px;
+    height: 50px;
 }
 
 .chat-input button:hover {

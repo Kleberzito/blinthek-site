@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Carrega partes comuns
     loadPage("navbar.html", "navbar");
     loadPage("footer.html", "footer");
+    loadPage("newsletter.html", "newsletter");
 
     // Carrega o chat e, quando terminar, dispara evento
     loadPage("chat-box.html", "chat").then(() => {

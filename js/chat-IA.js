@@ -1,16 +1,55 @@
-function initChat() {
+async function initChat() { 
     // Elementos do chat (agora existem no DOM)
     const chatArea1 = document.getElementById("chat-area-1");
     const chatArea2 = document.getElementById("chat-area-2");
     const chatMessages = document.getElementById("chatMessages");
     const userInput1 = document.getElementById("userInput1");
     const userInput2 = document.getElementById("userInput");
-    const buttons = document.querySelectorAll(".chatButton");
+
+    const buttons = document.querySelectorAll(".chatButton");    
+
+    // Carrega e filtra os artigos 
+    let siteContext = ''; 
+    async function loadAndFilterArticles() {
+        try {
+            const response = await fetch('/data/artigos.json'); 
+            const artigos = await response.json();
+            
+            // Filtra artigos que contenham palavras-chave relacionadas a segurança/facilities
+            const palavrasChave = ['segurança', 'facilities', 'alarme', 'monitoramento', 'câmera', 'portaria', 'limpeza', 'manutenção'];
+            
+            const artigosFiltrados = artigos.filter(artigo => {
+                const titulo = artigo.titulo.toLowerCase();
+                const conteudo = artigo.conteudo.toLowerCase();
+                return palavrasChave.some(palavra => 
+                    titulo.includes(palavra) || conteudo.includes(palavra)
+                );
+            });
+            
+            // Concatena os títulos e conteúdos em um único texto
+            siteContext = artigosFiltrados.map(artigo => 
+                `Título: ${artigo.titulo}\nConteúdo: ${artigo.conteudo}`
+            ).join('\n\n---\n\n');
+            
+            console.log(`Contexto carregado com ${artigosFiltrados.length} artigos relevantes.`);
+        } catch (error) {
+            console.error('Erro ao carregar artigos:', error);
+            siteContext = 'Conteúdo sobre segurança e facilities indisponível no momento.';
+        }
+    }
+
+    await loadAndFilterArticles(); // aguarda o carregamento
 
     // Verificação de segurança
     if (!chatArea1 || !chatArea2 || !chatMessages || !userInput1 || !userInput2 || buttons.length === 0) {
         console.error("Elementos do chat não encontrados. Verifique o chat-box.html.");
         return;
+    }
+
+    // Se a área 2 já estiver ativa, inicia modelo em segundo plano
+    if (!chatArea2.classList.contains('desactive') && chatArea2.classList.contains('active')) {
+        userInput2.focus();
+        if (!engine) initWebLLM(); // isso só será chamado após o contexto carregado
     }
 
     // Estado do WebLLM
@@ -22,7 +61,23 @@ function initChat() {
     function addMessage(text, sender) {
         const messageDiv = document.createElement('div');
         messageDiv.classList.add('message', sender === 'user' ? 'user' : 'ai');
-        messageDiv.textContent = text;
+        
+        if (sender === 'ai') {
+            // Cria o elemento de imagem (avatar)
+            const img = document.createElement('img');
+            img.src = 'img/icon/bot-svgrepo-com.svg'; // ajuste o caminho se necessário
+            img.alt = 'avatar IA';
+            img.title = 'avatar';
+            messageDiv.appendChild(img);
+            
+            // Adiciona o texto como um nó de texto (evita injeção de HTML)
+            messageDiv.appendChild(document.createTextNode(text));
+        } else {
+            // Mensagem do usuário: apenas texto
+            messageDiv.textContent = text;
+        }
+        
+        // Adiciona a mensagem ao chat
         chatMessages.appendChild(messageDiv);
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
@@ -41,7 +96,7 @@ function initChat() {
         if (indicator) indicator.remove();
     }
 
-    // --- Monitoramento de input (habilita/desabilita botão) ---
+    // --- habilita/desabilita botão ---
     function setupInputMonitoring(input, button) {
         if (!input || !button) return;
         button.disabled = input.value.trim() === "";
@@ -100,13 +155,30 @@ function initChat() {
             return;
         }
 
+        // Verifica se o contexto foi carregado
+        if (!siteContext) {
+            addMessage('A base de conhecimento ainda está sendo carregada. Tente novamente em instantes.', 'ai');
+            return;
+        }
+
         showTypingIndicator();
         try {
+            // Prepara as mensagens com contexto e pergunta
+            const messages = [
+                {
+                    role: 'system',
+                    content: `Você é um assistente especializado em segurança e facilities. Use APENAS as informações abaixo para responder. Se a resposta 
+                    não estiver no contexto, diga que não sabe ou sugira entrar em contato para mais informações.\n\nContexto:\n${truncateContext(siteContext, 1500)}`
+                },
+                { role: 'user', content: message }
+            ];
+
             const reply = await engine.chat.completions.create({
-                messages: [{ role: 'user', content: message }],
+                messages: messages,
                 temperature: 0.7,
                 max_tokens: 500,
             });
+
             removeTypingIndicator();
             addMessage(reply.choices[0].message.content, 'ai');
         } catch (error) {
@@ -114,6 +186,14 @@ function initChat() {
             removeTypingIndicator();
             addMessage(`Erro: ${error.message}`, 'ai');
         }
+    }
+
+    function truncateContext(text, maxTokens = 1500) {
+        const maxChars = maxTokens * 4; // aproximação 1 token ≈ 4 caracteres
+        if (text.length > maxChars) {
+            return text.substring(0, maxChars) + '... [conteúdo truncado]';
+        }
+        return text;
     }
 
     // --- Processa envio da área 2 ---
