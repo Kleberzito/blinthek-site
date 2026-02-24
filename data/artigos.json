@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "titulo": "Sua casa não é BBB, mas pode ser muito bem protegida",
+        "conteudo": "Você não precisa transformar sua casa em um reality show para garantir segurança total... (texto completo)",
+        "categoria": "segurança residencial"
+    },
+    {
+        "id": 2,
+        "titulo": "Benefícios da portaria remota para condomínios",
+        "conteudo": "A portaria remota traz economia e segurança para condomínios...",
+        "categoria": "facilities"
+    },
+    {
+        "id": 3,
+        "titulo": "Como escolher o melhor sistema de alarme",
+        "conteudo": "Existem diversos tipos de alarme...",
+        "categoria": "segurança"
+    }
+]
