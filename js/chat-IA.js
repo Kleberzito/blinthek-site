@@ -12,10 +12,13 @@ async function initChat() {
     let siteContext = ''; 
     async function loadAndFilterArticles() {
         try {
-            const response = await fetch('/data/artigos.json'); 
+            const response = await fetch('./data/artigos.json'); 
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status} - ${response.statusText}`);
+            }
             const artigos = await response.json();
             
-            // Filtra artigos que contenham palavras-chave relacionadas a segurança/facilities
+            // Palavras-chave relacionadas a segurança e facilities
             const palavrasChave = ['segurança', 'facilities', 'alarme', 'monitoramento', 'câmera', 'portaria', 'limpeza', 'manutenção'];
             
             const artigosFiltrados = artigos.filter(artigo => {
@@ -26,7 +29,7 @@ async function initChat() {
                 );
             });
             
-            // Concatena os títulos e conteúdos em um único texto
+            // Concatena os títulos e conteúdos
             siteContext = artigosFiltrados.map(artigo => 
                 `Título: ${artigo.titulo}\nConteúdo: ${artigo.conteudo}`
             ).join('\n\n---\n\n');
@@ -35,6 +38,8 @@ async function initChat() {
         } catch (error) {
             console.error('Erro ao carregar artigos:', error);
             siteContext = 'Conteúdo sobre segurança e facilities indisponível no momento.';
+            // Opcional: mostrar mensagem na interface
+            addMessage('Não foi possível carregar a base de conhecimento.', 'ai');
         }
     }
 
@@ -65,7 +70,7 @@ async function initChat() {
         if (sender === 'ai') {
             // Cria o elemento de imagem (avatar)
             const img = document.createElement('img');
-            img.src = 'img/icon/bot-svgrepo-com.svg'; // ajuste o caminho se necessário
+            img.src = './img/icon/bot-svgrepo-com.svg'; // ajuste o caminho se necessário
             img.alt = 'avatar IA';
             img.title = 'avatar';
             messageDiv.appendChild(img);
